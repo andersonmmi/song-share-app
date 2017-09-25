@@ -19,23 +19,23 @@ class Form extends Component {
       artistValue: '',
       songValue: '',
       notesValue: ''
-    }
+    };
   }
 
   setUserNameValue = (event) => {
-    this.setState({userName: event.target.value});
+    this.setState({userNameValue: event.target.value});
   }
 
   setArtistValue = (event) => {
-    this.setState({artist: event.target.value});
+    this.setState({artistValue: event.target.value});
   }
 
   setSongValue = (event) => {
-    this.setState({song: event.target.value});
+    this.setState({songValue: event.target.value});
   }
 
   setNotesValue = (event) => {
-    this.setState({notes: event.target.value});
+    this.setState({notesValue: event.target.value});
   }
 
   handleSubmit = (event) => {
@@ -52,13 +52,29 @@ class Form extends Component {
     })
   }
 
+  componentWillMount(){
+    this.setState(this.state);
+  }
+
   render() {
     return (
       <div className="form">
-        <form onSubmit={this.handleSubmit()}>
+        <form onSubmit={this.handleSubmit}>
           <label>
             User Name:
             <input onChange={this.setUserNameValue} type="text" value={this.state.userNameValue}/>
+          </label>
+          <label>
+            Artist:
+            <input onChange={this.setArtistValue} type="text" value={this.state.artistValue}/>
+          </label>
+          <label>
+            Song:
+            <input onChange={this.setSongValue} type="text" value={this.state.songValue}/>
+          </label>
+          <label>
+            Notes:
+            <input onChange={this.setNotesValue} type="text" value={this.state.notesValue}/>
           </label>
           <input type="submit" value="Submit" />
         </form>
