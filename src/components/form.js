@@ -39,22 +39,22 @@ class Form extends Component {
   }
 
   handleSubmit = (event) => {
-    // event.preventDefault();
+    event.preventDefault();
     this.setState({
-      userName: this.userNameValue,
+      userName: this.state.userNameValue,
       userNameValue: '',
-      artist: this.artistValue,
+      artist: this.state.artistValue,
       artistValue: '',
-      song: this.songValue,
+      song: this.state.songValue,
       songValue: '',
-      notes: this.notesValue,
+      notes: this.state.notesValue,
       notesValue: ''
     })
   }
 
-  componentWillMount(){
-    this.setState(this.state);
-  }
+  // componentWillMount(){
+  //   this.setState(this.state);
+  // }
 
   render() {
     const formStyle = {
