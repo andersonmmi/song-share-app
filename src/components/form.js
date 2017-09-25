@@ -57,25 +57,32 @@ class Form extends Component {
   }
 
   render() {
+    const formStyle = {
+      width: "50%"
+    };
     return (
       <div className="form">
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} style={formStyle}>
           <label>
             User Name:
             <input onChange={this.setUserNameValue} type="text" value={this.state.userNameValue}/>
           </label>
+          <hr/>
           <label>
             Artist:
             <input onChange={this.setArtistValue} type="text" value={this.state.artistValue}/>
           </label>
+          <hr />
           <label>
             Song:
             <input onChange={this.setSongValue} type="text" value={this.state.songValue}/>
           </label>
+          <hr />
           <label>
             Notes:
             <input onChange={this.setNotesValue} type="text" value={this.state.notesValue}/>
           </label>
+          <hr />
           <input type="submit" value="Submit" />
         </form>
       </div>
