@@ -58,7 +58,8 @@ class Form extends Component {
 
   render() {
     const formStyle = {
-      width: "50%"
+      "width": "50%",
+      "backgroundColor": "deepskyblue"
     };
     return (
       <div className="form">

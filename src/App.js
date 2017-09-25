@@ -2,19 +2,22 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Form from './components/form.js';
+import Card from './components/card.js';
 
 class App extends Component {
   render() {
+    const headerStyle = {
+      "display": "flex",
+      "flexDirection": "row"
+    }
     return (
       <div className="App">
-        <div className="App-header">
+        <div className="App-header" style={headerStyle}>
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+          <h2>Play What?!</h2>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
         <Form />
+        <Card />
       </div>
     );
   }
