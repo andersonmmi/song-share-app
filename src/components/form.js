@@ -58,12 +58,12 @@ class Form extends Component {
 
   render() {
     const formStyle = {
-      "width": "50%",
-      "backgroundColor": "deepskyblue"
+      "backgroundColor": "deepskyblue",
+      "flexGrow": 1,
     };
     return (
-      <div className="form">
-        <form onSubmit={this.handleSubmit} style={formStyle}>
+      <div className="form" style={formStyle}>
+        <form onSubmit={this.handleSubmit} >
           <label>
             User Name:
             <input onChange={this.setUserNameValue} type="text" value={this.state.userNameValue}/>

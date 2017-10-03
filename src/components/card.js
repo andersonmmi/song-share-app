@@ -4,10 +4,14 @@ class Card extends Component {
 
 
   render(){
-
+    const cardStyle = {
+      "flexGrow": 1,
+    }
     return(
-      <div>
+      <div className="cards-container" style={cardStyle}>
         <p>Card data goes here</p>
+        <p>And here</p>
+        <p>And here, too!</p>
       </div>
     )
   }

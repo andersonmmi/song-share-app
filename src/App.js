@@ -10,14 +10,20 @@ class App extends Component {
       "display": "flex",
       "flexDirection": "row"
     }
+    const bodyContainerStyle={
+      "display": "flex",
+      "flexDirection": "row"
+    }
     return (
       <div className="App">
         <div className="App-header" style={headerStyle}>
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Play What?!</h2>
         </div>
-        <Form />
-        <Card />
+        <span className="body-container" style={bodyContainerStyle}>
+          <Form />
+          <Card />
+        </span>
       </div>
     );
   }
