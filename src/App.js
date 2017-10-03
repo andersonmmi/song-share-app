@@ -5,6 +5,28 @@ import Form from './components/form.js';
 import Card from './components/card.js';
 
 class App extends Component {
+  constructor(){
+    super();
+    this.state={
+      userName: '',
+      artist: '',
+      song: '',
+      notes: '',
+    };
+  }
+  handleTextChange = (event) => {
+    event.preventDefault();
+    console.log(event.target.id);
+    if (this.state[event.target.id] !== undefined){
+      this.setState({[event.target.id]: event.target.value});
+    }
+  }
+  handleSubmit = (event) => {
+    alert("button clicked");
+    console.log(event.target.id);
+  }
+
+
   render() {
     const headerStyle = {
       "display": "flex",
@@ -21,7 +43,7 @@ class App extends Component {
           <h2>Play What?!</h2>
         </div>
         <span className="body-container" style={bodyContainerStyle}>
-          <Form />
+          <Form textChange={this.handleTextChange} onClick={this.handleSubmit} props={this.state}/>
           <Card />
         </span>
       </div>

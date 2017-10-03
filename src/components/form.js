@@ -3,58 +3,7 @@ import React, { Component } from 'react';
 class Form extends Component {
   constructor(props){
     super(props);
-
-    this.setUserNameValue = this.setUserNameValue.bind(this);
-    this.setArtistValue = this.setArtistValue.bind(this);
-    this.setSongValue = this.setSongValue.bind(this);
-    this.setNotesValue = this.setNotesValue.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-
-    this.state = {
-      userName: '',
-      artist: '',
-      song: '',
-      notes: '',
-      userNameValue: '',
-      artistValue: '',
-      songValue: '',
-      notesValue: ''
-    };
   }
-
-  setUserNameValue = (event) => {
-    this.setState({userNameValue: event.target.value});
-  }
-
-  setArtistValue = (event) => {
-    this.setState({artistValue: event.target.value});
-  }
-
-  setSongValue = (event) => {
-    this.setState({songValue: event.target.value});
-  }
-
-  setNotesValue = (event) => {
-    this.setState({notesValue: event.target.value});
-  }
-
-  handleSubmit = (event) => {
-    event.preventDefault();
-    this.setState({
-      userName: this.state.userNameValue,
-      userNameValue: '',
-      artist: this.state.artistValue,
-      artistValue: '',
-      song: this.state.songValue,
-      songValue: '',
-      notes: this.state.notesValue,
-      notesValue: ''
-    })
-  }
-
-  // componentWillMount(){
-  //   this.setState(this.state);
-  // }
 
   render() {
     const formStyle = {
@@ -63,28 +12,28 @@ class Form extends Component {
     };
     return (
       <div className="form" style={formStyle}>
-        <form onSubmit={this.handleSubmit} >
+        <form>
           <label>
             User Name:
-            <input onChange={this.setUserNameValue} type="text" value={this.state.userNameValue}/>
+            <input id="userName" onChange={this.props.textChange} type="text" value={this.props.userName}/>
           </label>
           <hr/>
           <label>
             Artist:
-            <input onChange={this.setArtistValue} type="text" value={this.state.artistValue}/>
+            <input id="artist" onChange={this.props.textChange} type="text" value={this.props.artistValue}/>
           </label>
           <hr />
           <label>
             Song:
-            <input onChange={this.setSongValue} type="text" value={this.state.songValue}/>
+            <input id="song" onChange={this.props.textChange} type="text" value={this.props.songValue}/>
           </label>
           <hr />
           <label>
             Notes:
-            <input onChange={this.setNotesValue} type="text" value={this.state.notesValue}/>
+            <input id="notes" onChange={this.props.textChange} type="text" value={this.props.notesValue}/>
           </label>
           <hr />
-          <input type="submit" value="Submit" />
+          <input id="submit" type="button" value="Submit" onClick={this.props.onClick}/>
         </form>
       </div>
     );
