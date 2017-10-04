@@ -19,8 +19,6 @@ class Card extends Component {
         if (err) {
           console.log(err);
         } else {
-          console.log(typeof JSON.parse(res.text));
-          console.log(JSON.parse(res.text));
           let data = JSON.parse(res.text);
           this.setState({
             songs: data,
@@ -34,7 +32,6 @@ class Card extends Component {
       "flexGrow": 1,
     }
     let songs = this.state.songs.map((cards)=>{
-      console.log("times mapped through :" + cards);
       return(<Cards key={cards._id} data={cards} />);
     })
 

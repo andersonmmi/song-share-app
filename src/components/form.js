@@ -15,16 +15,13 @@ class Form extends Component {
   }
   handleTextChange = (event) => {
     event.preventDefault();
-    console.log(event.target.id);
     if (this.state[event.target.id] !== undefined){
       this.setState({[event.target.id]: event.target.value});
     }
   }
   handleSubmit = (event) => {
-    alert("button clicked");
     let api ='https://tiny-lasagna-server.herokuapp.com/collections/playlisting';
     let listItem = JSON.stringify(this.state);
-    console.log(event.target.id);
     request
       .post(api)
       .send(listItem)
@@ -34,8 +31,7 @@ class Form extends Component {
         if (err) {
           console.log(err);
         } else {
-          console.log(typeof JSON.parse(res.text));
-          console.log(JSON.parse(res.text));
+          console.log("Success"));
           }
         })
     this.setState({
@@ -71,7 +67,7 @@ class Form extends Component {
           <hr />
           <label>
             Notes:
-            <input id="songNotes" onChange={this.handleTextChange} type="text" value={this.state.songNotes}/>
+            <textarea id="songNotes" onChange={this.handleTextChange} type="text" value={this.state.songNotes}/>
           </label>
           <hr />
           <input id="submit" type="button" value="Submit" onClick={this.handleSubmit}/>
