@@ -31,7 +31,7 @@ class Form extends Component {
         if (err) {
           console.log(err);
         } else {
-          console.log("Success"));
+          console.log("Success");
           }
         })
     this.setState({
