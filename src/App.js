@@ -12,6 +12,7 @@ class App extends Component {
       artist: '',
       song: '',
       notes: '',
+      data: [],
     };
   }
   handleTextChange = (event) => {
@@ -24,6 +25,9 @@ class App extends Component {
   handleSubmit = (event) => {
     alert("button clicked");
     console.log(event.target.id);
+    this.setState({
+      data: ["tinylasangia information"],
+    })
   }
 
 
