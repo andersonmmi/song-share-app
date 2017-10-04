@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
+import request from 'superagent';
 
 class Form extends Component {
   constructor(props){
     super(props);
     this.state={
       userName: '',
-      artist: '',
-      song: '',
-      notes: '',
+      songArtist: '',
+      songTitle: '',
+      songNotes: '',
     }
     this.handleTextChange=this.handleTextChange.bind(this);
     this.handleSubmit=this.handleSubmit.bind(this);
@@ -21,9 +22,27 @@ class Form extends Component {
   }
   handleSubmit = (event) => {
     alert("button clicked");
+    let api ='https://tiny-lasagna-server.herokuapp.com/collections/playlisting';
+    let listItem = JSON.stringify(this.state);
     console.log(event.target.id);
+    request
+      .post(api)
+      .send(listItem)
+      .set('Accept', 'application/json')
+      .set('Content-Type', 'application/json')
+      .end((err,res) => {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(typeof JSON.parse(res.text));
+          console.log(JSON.parse(res.text));
+          }
+        })
     this.setState({
-      data: ["tinylasangia information"],
+      userName: '',
+      songArtist: '',
+      songTitle: '',
+      songNotes: '',
     })
   }
 
@@ -42,17 +61,17 @@ class Form extends Component {
           <hr/>
           <label>
             Artist:
-            <input id="artist" onChange={this.handleTextChange} type="text" value={this.state.artistValue}/>
+            <input id="songArtist" onChange={this.handleTextChange} type="text" value={this.state.songArtist}/>
           </label>
           <hr />
           <label>
             Song:
-            <input id="song" onChange={this.handleTextChange} type="text" value={this.state.songValue}/>
+            <input id="songTitle" onChange={this.handleTextChange} type="text" value={this.state.songTitle}/>
           </label>
           <hr />
           <label>
             Notes:
-            <input id="notes" onChange={this.handleTextChange} type="text" value={this.state.notesValue}/>
+            <input id="songNotes" onChange={this.handleTextChange} type="text" value={this.state.songNotes}/>
           </label>
           <hr />
           <input id="submit" type="button" value="Submit" onClick={this.handleSubmit}/>
