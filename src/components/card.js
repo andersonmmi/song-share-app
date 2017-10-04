@@ -8,9 +8,10 @@ class Card extends Component {
     this.state={
       songs:[],
     }
+    this.handleClick=this.handleClick.bind(this);
   }
 
-  componentDidMount(){
+  handleClick(){
     let api ='https://tiny-lasagna-server.herokuapp.com/collections/playlisting';
     request
       .get(api)
@@ -39,6 +40,7 @@ class Card extends Component {
 
     return(
       <div className="cards-container" style={cardStyle}>
+        <button className="update-button" value="Update" type="button" onClick={this.handleClick}>Update</button>
         {songs}
       </div>
     )
